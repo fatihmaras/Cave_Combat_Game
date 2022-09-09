@@ -24,7 +24,9 @@ public class PlayerMovement : MonoBehaviour
 
     public float JumpHeight = 0.1f;
     public float GravityDivide = 100f;
-    public float JumpSpeed=30;
+    public float JumpSpeed=100;
+
+    private float AcTimer;
 
     private void Awake()
     {
@@ -58,13 +60,15 @@ public class PlayerMovement : MonoBehaviour
         if (!IsGround)
         {
             Velocity.y += Gravity * Time.deltaTime / GravityDivide;
-            speed = JumpSpeed;
+            AcTimer+=Time.deltaTime/3;
+            speed = Mathf.Lerp(10,JumpSpeed,AcTimer);
             // silinmiþ controller.Move(Velocity);
         }
         else
         {
             Velocity.y = -0.05f;
             speed = 10;
+            AcTimer=0;
         }
 
         if (Input.GetKeyDown(KeyCode.Space) && IsGround)
