@@ -6,6 +6,10 @@ public class LaserEnemy : MonoBehaviour
 {
     RaycastHit hit;
     public LayerMask Obstacle, Player_Layer;
+
+    public GameObject DeathEffect;
+
+    public float LaserMultipler = 1;
     
     void Update()
     {
@@ -15,17 +19,18 @@ public class LaserEnemy : MonoBehaviour
             GetComponent<LineRenderer>().SetPosition(0, transform.position);
             GetComponent<LineRenderer>().SetPosition(1, hit.point);
 
-            GetComponent<LineRenderer>().startWidth = 0.025f + Mathf.Sin(Time.time) / 80;
+            GetComponent<LineRenderer>().startWidth = 0.025f * LaserMultipler + Mathf.Sin(Time.time) / 80;
         }
         else
         {
             GetComponent<LineRenderer>().enabled = false;
         }
 
+
+        //Kill Player
         if (Physics.Raycast(transform.position, transform.forward, out hit, Mathf.Infinity,Player_Layer))
         {
-            Destroy(hit.transform.gameObject);
-
+            hit.transform.gameObject.GetComponent<PlayerManager>().Death();
         }
     }
 }
