@@ -10,6 +10,11 @@ public class Drone : MonoBehaviour
     public float Speed = 1;
     public float Follow_Distance = 10f;
 
+    private float CoolDown = 2f;
+
+    public GameObject Mesh;
+
+    public GameObject Bullet;
 
     private void Awake()
     {
@@ -19,6 +24,7 @@ public class Drone : MonoBehaviour
     private void Update()
     {
         FollowPlayer();
+        Shot();
     }
 
     private void FollowPlayer()
@@ -38,5 +44,24 @@ public class Drone : MonoBehaviour
         }
         
 
+    }
+
+    private void Shot()
+    {
+        if (CoolDown > 0)
+        {
+            CoolDown -= Time.deltaTime;
+        }
+        else
+        {
+            CoolDown = 2f;
+
+            //Shot
+
+            Mesh.GetComponent<Animator>().SetTrigger("Shot");
+            Instantiate(Bullet, transform.position, transform.rotation*Quaternion.Euler(0,180,0));
+
+
+        }
     }
 }
