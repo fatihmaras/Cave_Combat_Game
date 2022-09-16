@@ -16,8 +16,8 @@ TagManager:
   - 
   - Obstacle
   - Player
-  - 
-  - 
+  - TriggerBox
+  - Collision
   - 
   - 
   - 

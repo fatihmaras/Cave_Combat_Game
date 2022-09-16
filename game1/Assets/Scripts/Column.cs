@@ -6,24 +6,28 @@ public class Column : MonoBehaviour
 {
     public Transform Checker;
     public LayerMask PlayerLayer;
+    // public GameObject ColumnMesh;
 
     public float Radius;
 
-    private Vector3 Velocity;
+    public Vector3 Velocity;
 
     private bool Broken = false;
+
+    public float ColumnDivide;
 
 
     private void Update()
     {
-        if (Physics.CheckBox(Checker.position, new Vector3(Radius,2,Radius), Quaternion.identity,PlayerLayer))
+        if (Physics.CheckBox(Checker.position, new Vector3(Radius, 2, Radius), Quaternion.identity, PlayerLayer))
         {
+            print("okay");
             Broken = true;
         }
         if (Broken)
         {
-            Velocity.z -= Time.deltaTime / 200;
-            transform.Translate(Velocity);
+            Velocity.y -= Time.deltaTime / ColumnDivide;
+           transform.Translate(Velocity);
         }
     }
     

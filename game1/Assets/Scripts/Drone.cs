@@ -16,6 +16,12 @@ public class Drone : MonoBehaviour
 
     public GameObject Bullet;
 
+    public float Health = 100f;
+
+    public GameObject EnemyDestroyEffect;
+
+    public AudioClip DroneExplosion;
+
     private void Awake()
     {
         Player = GameObject.FindGameObjectWithTag("Player").transform;
@@ -25,6 +31,7 @@ public class Drone : MonoBehaviour
     {
         FollowPlayer();
         Shot();
+        Death();
     }
 
     private void FollowPlayer()
@@ -58,10 +65,27 @@ public class Drone : MonoBehaviour
 
             //Shot
 
-            Mesh.GetComponent<Animator>().SetTrigger("Shot");
+           
+
+            Mesh.GetComponent<Animator>().SetTrigger("Shott");
             Instantiate(Bullet, transform.position, transform.rotation*Quaternion.Euler(0,180,0));
 
 
         }
+    }
+    private void Death()
+    { 
+        if (Health<=0)
+        {
+            //Spawn Particle
+            Instantiate(EnemyDestroyEffect, transform.position, Quaternion.identity);
+
+            //Play Sound Effect
+            GameObject.FindGameObjectWithTag("Player").GetComponent<AudioSource>().PlayOneShot(DroneExplosion);
+
+            //Destroy Gameobject
+            Destroy(this.gameObject);
+        }
+     
     }
 }

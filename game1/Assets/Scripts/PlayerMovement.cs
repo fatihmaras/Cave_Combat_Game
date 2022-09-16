@@ -49,11 +49,10 @@ public class PlayerMovement : MonoBehaviour
 
         //Camera Controller
         transform.Rotate(0, Input.GetAxis("Mouse X") * Time.deltaTime * MouseSensitivity, 0);
+
         XRotation-=Input.GetAxis("Mouse Y")*Time.deltaTime*MouseSensitivity;
         XRotation = Mathf.Clamp(XRotation, -90f, 90f);
         Camera.main.transform.localRotation = Quaternion.Euler(XRotation, 0, 0);
-
-
         
         //Jump and Gravity
 
@@ -71,13 +70,14 @@ public class PlayerMovement : MonoBehaviour
             AcTimer=0;
         }
 
+        // Jump as push Space
         if (Input.GetKeyDown(KeyCode.Space) && IsGround)
         {
-            Velocity.y = Mathf.Sqrt(JumpHeight * -2f * Gravity / GravityDivide);
+            Velocity.y = Mathf.Sqrt(JumpHeight * -2f * Gravity / GravityDivide*Time.deltaTime);
         }
 
       
 
-        controller.Move(MoveVelocity);
+        controller.Move(Velocity);
     }
 }

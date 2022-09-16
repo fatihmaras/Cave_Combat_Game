@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3089234324804049303}
   - component: {fileID: 3089234325729203648}
   - component: {fileID: 3089234324797665690}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Pillar twisted prefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 3089234324797765431}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -2.3451347, y: 0.030035814, z: 8.021133}
-  m_LocalScale: {x: 0.02, y: 0.02, z: 0.02}
+  m_LocalScale: {x: 0.05, y: 0.05, z: 0.05}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3089234324829118214}
@@ -112,7 +112,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 69.288, y: 220.0032, z: 69.288}
+  m_Size: {x: 70, y: 222, z: 70}
   m_Center: {x: 0, y: 108.5, z: 0}
 --- !u!114 &3089234324797665690
 MonoBehaviour:
@@ -130,7 +130,9 @@ MonoBehaviour:
   PlayerLayer:
     serializedVersion: 2
     m_Bits: 512
-  Radius: 0
+  ColumnMesh: {fileID: 3089234324797765431}
+  Radius: 2
+  ColumnDivide: 1
 --- !u!1 &3089234324829118209
 GameObject:
   m_ObjectHideFlags: 0
@@ -140,7 +142,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3089234324829118214}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Checker
   m_TagString: Untagged
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
@@ -155,8 +157,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3089234324829118209}
   m_LocalRotation: {x: -0, y: 0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 219.9, z: 0}
-  m_LocalScale: {x: 50, y: 50, z: 50}
+  m_LocalPosition: {x: 0, y: 221, z: 0}
+  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3089234324797795095}

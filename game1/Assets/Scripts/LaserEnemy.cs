@@ -10,11 +10,17 @@ public class LaserEnemy : MonoBehaviour
     public GameObject DeathEffect;
 
     public float LaserMultipler = 1;
+
+    private bool LaserHit;
+
+    public float LaserRange = 100f;
     
     void Update()
     {
-        if (Physics.Raycast(transform.position,transform.forward,out hit,Mathf.Infinity,Obstacle))
+        //Line Renderer
+        if (Physics.Raycast(transform.position,transform.forward,out hit,LaserRange ,Obstacle))
         {
+            LaserHit= true;
             GetComponent<LineRenderer>().enabled = true;
             GetComponent<LineRenderer>().SetPosition(0, transform.position);
             GetComponent<LineRenderer>().SetPosition(1, hit.point);
@@ -23,14 +29,19 @@ public class LaserEnemy : MonoBehaviour
         }
         else
         {
+            LaserHit = false;
             GetComponent<LineRenderer>().enabled = false;
         }
 
 
         //Kill Player
-        if (Physics.Raycast(transform.position, transform.forward, out hit, Mathf.Infinity,Player_Layer))
+        if (Physics.Raycast(transform.position, transform.forward, out hit, LaserRange,Player_Layer))
         {
-            hit.transform.gameObject.GetComponent<PlayerManager>().Death();
+            if (LaserHit)
+            {
+                hit.transform.gameObject.GetComponent<PlayerManager>().Death();
+            }
+            
         }
     }
 }
