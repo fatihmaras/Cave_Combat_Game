@@ -146,7 +146,7 @@ Transform:
   m_GameObject: {fileID: 3830275242705511389}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 2.69, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.4, y: 1.4, z: 1.4}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1321776766007135257}
@@ -165,8 +165,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f63075b6d18d244db8f520221f587cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 1
-  Follow_Distance: 10
+  Speed: 12
+  Follow_Distance: 15
   Mesh: {fileID: 1809378718570256035}
   Bullet: {fileID: 4619814450533060261, guid: 2c40e26576c78d549883f7d372adc57f, type: 3}
   Health: 100
