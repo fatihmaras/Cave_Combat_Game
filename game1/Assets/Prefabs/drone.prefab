@@ -165,7 +165,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f63075b6d18d244db8f520221f587cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 12
+  Speed: 9999
   Follow_Distance: 15
   Mesh: {fileID: 1809378718570256035}
   Bullet: {fileID: 4619814450533060261, guid: 2c40e26576c78d549883f7d372adc57f, type: 3}

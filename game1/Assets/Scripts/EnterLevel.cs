@@ -9,14 +9,17 @@ public class EnterLevel : MonoBehaviour
     public bool Enter;
     private void OnTriggerEnter(Collider other)
     {
-        if (Enter)
+        if (other.CompareTag("Player"))
         {
-            LM.PlayerEnter = true;
-        }
-        else
-        {
-            LM.PlayerExit = true;
-        }
 
+            if (Enter)
+            {
+                LM.PlayerEnter = true;
+            }
+            else
+            {
+                LM.PlayerExit = true;
+            }
+        }
     }
 }
