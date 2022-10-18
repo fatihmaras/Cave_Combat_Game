@@ -21,11 +21,11 @@ public class WeaponControl : MonoBehaviour
     void Update()
     {
         //Look
-        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, Mathf.Infinity, ObstacleLayer))
-        {
-            Hand.transform.LookAt(hit.point);
-            Hand.transform.rotation *= Quaternion.Euler(Offfset);
-        }
+        // if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, Mathf.Infinity, ObstacleLayer))
+        // {
+        //     Hand.transform.LookAt(hit.point);
+        //     Hand.transform.rotation *= Quaternion.Euler(Offfset);
+        // }
 
         // CoolDown
 

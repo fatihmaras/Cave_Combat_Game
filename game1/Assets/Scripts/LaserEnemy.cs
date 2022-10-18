@@ -12,25 +12,29 @@ public class LaserEnemy : MonoBehaviour
     public float LaserMultipler = 1;
 
     private bool LaserHit;
-
+    private LineRenderer line;
     public float LaserRange = 100f;
     
+    private void Awake() {
+        line = GetComponent<LineRenderer>();
+    }
+
     void Update()
     {
         //Line Renderer
         if (Physics.Raycast(transform.position,transform.forward,out hit,LaserRange ,Obstacle))
         {
             LaserHit= true;
-            GetComponent<LineRenderer>().enabled = true;
-            GetComponent<LineRenderer>().SetPosition(0, transform.position);
-            GetComponent<LineRenderer>().SetPosition(1, hit.point);
+            line.enabled = true;
+            line.SetPosition(0, transform.position);
+            line.SetPosition(1, hit.point);
 
-            GetComponent<LineRenderer>().startWidth = 0.025f * LaserMultipler + Mathf.Sin(Time.time) / 80;
+            line.startWidth = 0.025f * LaserMultipler + Mathf.Sin(Time.time) / 80;
         }
         else
         {
             LaserHit = false;
-            GetComponent<LineRenderer>().enabled = false;
+            line.enabled = false;
         }
 
 
